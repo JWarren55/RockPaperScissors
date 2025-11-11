@@ -24,9 +24,8 @@ function getHumanChoice() {
 let humanScore = 0
 let computerScore = 0
 
-function playRound() {
-    const humanChoice = getHumanChoice()
-    const computerChoice = getComputerChoice()
+function playRound(humanChoice, computerChoice) {
+    
     let result = "You "
     if(humanChoice == "rock") {
         if(computerChoice == "paper") {
@@ -63,4 +62,13 @@ function playRound() {
     }
     
     return result
+}
+
+function playGame() {
+    for (let index = 0; index < 5; index++) {
+        const humanSelection = getHumanChoice()
+        const computerSelection = getComputerChoice()
+        console.log(playRound(humanSelection, computerSelection))
+    }
+    console.log("Your score " + humanScore + ". Computer score " + computerScore)
 }
