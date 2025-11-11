@@ -8,3 +8,15 @@ function getComputerChoice() {
         return "Scissors"
     }
 }
+
+function getHumanChoice() {
+    valid = false
+    let hand = ""
+    while(!valid) {
+        hand = prompt("Play \"Rock\" \"Paper\" or \"Scissors\"")
+        if(hand == "Rock" || hand == "Paper" || hand == "Scissors") {
+            valid = true
+            return hand
+        }
+    }
+}
