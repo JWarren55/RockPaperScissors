@@ -26,6 +26,26 @@ function getHumanChoice() {
 // Initializes scores
 let humanScore = 0
 let computerScore = 0
+let playerLevel = 1
+let playerEXP = 0
+
+// Outcome functions
+function computerWin() {
+    computerScore++
+    playerEXP += 5
+    return "lose! "
+}
+
+function humanWin() {
+    humanScore++
+    playerEXP += 20
+    return "win! "
+}
+
+function draw() {
+    playerEXP += 10
+    return "draw! "
+}
 
 // Plays a single round of the game
 function playRound(humanChoice, computerChoice) {
@@ -34,33 +54,27 @@ function playRound(humanChoice, computerChoice) {
     let result = "You "
     if(humanChoice == "rock") {
         if(computerChoice == "paper") {
-            computerScore++
-            result += "lose! "
+            result += computerWin()
         } else if(computerChoice == "scissors") {
-            humanScore++
-            result += "win! "
+            result += humanWin()
         }
     } else if (humanChoice == "paper") {
         if(computerChoice == "scissors") {
-            computerScore++
-            result += "lose! "
+            result += computerWin()
         } else if(computerChoice == "rock") {
-            humanScore++
-            result += "win! "
+            result += humanWin()
         }
     } else if (humanChoice == "scissors") {
         if(computerChoice == "rock") {
-            computerScore++
-            result += "lose! "
+            result += computerWin()
         } else if(computerChoice == "paper") {
-            humanScore++
-            result += "win! "
+            result += humanWin()
         }
     }
 
     // Appends the result details
     if(result == "You ") {
-        result += "Draw " + humanChoice + " is " + computerChoice
+        result += draw() + humanChoice + " is " + computerChoice
     } else if (result.includes("lose")) {
         result += computerChoice + " beats " + humanChoice
     } else {
@@ -79,6 +93,13 @@ function playGame() {
 
     }
     alert("Your score " + humanScore + ". Computer score " + computerScore)
+    // Level up check
+    if(playerEXP >= 100) {
+        playerLevel++
+        playerEXP = playerEXP - 100
+        alert("Congratulations! You've leveled up to level " + playerLevel + "!")
+    }
+    alert("Your level is " + playerLevel + " with " + playerEXP + " EXP! get 100 EXP to level up.")
 }
 
 playGame();
