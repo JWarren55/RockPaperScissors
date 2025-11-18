@@ -1,3 +1,4 @@
+// Generates a random choice for the computer
 function getComputerChoice() {
     number = Math.random();
     if (.6 < number) {
@@ -9,6 +10,7 @@ function getComputerChoice() {
     }
 }
 
+// Prompts the user for their choice and validates it
 function getHumanChoice() {
     valid = false
     let hand = ""
@@ -21,11 +23,14 @@ function getHumanChoice() {
     }
 }
 
+// Initializes scores
 let humanScore = 0
 let computerScore = 0
 
+// Plays a single round of the game
 function playRound(humanChoice, computerChoice) {
     
+    // Determines the outcome of the round
     let result = "You "
     if(humanChoice == "rock") {
         if(computerChoice == "paper") {
@@ -53,6 +58,7 @@ function playRound(humanChoice, computerChoice) {
         }
     }
 
+    // Appends the result details
     if(result == "You ") {
         result += "Draw " + humanChoice + " is " + computerChoice
     } else if (result.includes("lose")) {
@@ -61,14 +67,15 @@ function playRound(humanChoice, computerChoice) {
         result += humanChoice + " beats " + computerChoice
     }
     
-    return result
+    console.log(result)
 }
 
+// Plays a full game of 5 rounds
 function playGame() {
     for (let index = 0; index < 5; index++) {
         const humanSelection = getHumanChoice()
         const computerSelection = getComputerChoice()
-        console.log(playRound(humanSelection, computerSelection))
+        playRound(humanSelection, computerSelection)
     }
     console.log("Your score " + humanScore + ". Computer score " + computerScore)
 }
