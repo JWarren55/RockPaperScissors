@@ -66,8 +66,8 @@ function playRound(humanChoice, computerChoice) {
     } else {
         result += humanChoice + " beats " + computerChoice
     }
-    
-    console.log(result)
+
+    return result
 }
 
 // Plays a full game of 5 rounds
@@ -75,7 +75,10 @@ function playGame() {
     for (let index = 0; index < 5; index++) {
         const humanSelection = getHumanChoice()
         const computerSelection = getComputerChoice()
-        playRound(humanSelection, computerSelection)
+        alert(playRound(humanSelection, computerSelection) + "\nYour score " + humanScore + ". Computer score " + computerScore)
+
     }
-    console.log("Your score " + humanScore + ". Computer score " + computerScore)
+    alert("Your score " + humanScore + ". Computer score " + computerScore)
 }
+
+playGame();
